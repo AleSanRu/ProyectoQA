@@ -266,3 +266,29 @@ class TestColum:
         assert elemento == esperado, f"Inicio de sesion {elemento}fallido - EL TEST :{esperado}"
         Eliminar_esperado="¿Estás seguro de que quieres eliminar esta inscripción?"
         assert Eliminar_esperado == Mensaje_Eliminar, f"Inicio de sesion {elemento}fallido - EL TEST :{esperado}"
+    def test_verify_View_student(self):
+        self.driver.find_element(By.XPATH, "//input[@placeholder = 'Ingresar Correo Electrónico']").send_keys("alejandro@gmail.com")
+        time.sleep(1)  
+        self.driver.find_element(By.XPATH, "//input[@placeholder = 'Ingresar Contraseña']").send_keys("123456Q@")
+        time.sleep(1) 
+        self.driver.find_element(By.XPATH, "//button[text() = 'INGRESAR']").click()
+        time.sleep(7)
+        self.driver.find_element(By.XPATH, "//a[@href='/students']").click()
+        time.sleep(5)
+        self.driver.find_element(By.XPATH,"//input[@type = 'search']").send_keys('12345678')
+        time.sleep(8)
+        self.driver.find_element(By.XPATH,"//div[contains(@class, 'relative w-11 h-6 bg-gray-200 peer-focus:outline-none')]").click()
+        time.sleep(3)
+        self.driver.find_element(By.XPATH,"//button[text() = 'Confirmar']").click()
+        time.sleep(3)
+        self.driver.find_element(By.XPATH,"//div[contains(@class, 'relative w-11 h-6 bg-gray-200 peer-focus:outline-none')]").click()
+        time.sleep(3)
+        self.driver.find_element(By.XPATH,"//button[text() = 'Confirmar']").click()
+        time.sleep(3)
+        self.driver.find_element(By.XPATH,"//button[text() = 'Ver Perfil']").click()
+        time.sleep(8)
+        self.driver.find_element(By.XPATH,"//button[text() = 'Volver']").click()
+        time.sleep(7)
+        elemento = self.driver.find_element(By.XPATH, "//td[text()='Ale Ale']").text
+        esperado = "ALE ALE"
+        assert elemento == esperado, f"Inicio de sesion {elemento}fallido - EL TEST :{esperado}"
