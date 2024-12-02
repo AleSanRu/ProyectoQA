@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 
-class test_login:
+class TestLogin:
     def setup_method(self):
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
